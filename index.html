@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تا شروع بگایی</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:'Vazirmatn',sans-serif;
+    background:
+        radial-gradient(circle at 50% 15%, #3b0b0b 0%, #160606 30%, #070707 65%, #020202 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* GRID BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(255,0,0,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,0,.025) 1px,transparent 1px);
+    background-size:42px 42px;
+    pointer-events:none;
+}
+
+/* VIGNETTE */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle,transparent 35%,rgba(0,0,0,.7) 100%);
+}
+
+/* SCAN EFFECT */
+
+.scan{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:10;
+
+    background:linear-gradient(
+        transparent 0%,
+        rgba(255,0,0,.035) 50%,
+        transparent 100%
+    );
+
+    animation:scan 5s linear infinite;
+}
+
+@keyframes scan{
+    from{
+        transform:translateY(-100%);
+    }
+
+    to{
+        transform:translateY(100%);
+    }
+}
+
+/* MAIN */
+
+.container{
+    width:min(1100px,94%);
+    position:relative;
+    z-index:3;
+    text-align:center;
+}
+
+/* WARNING */
+
+.warning{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:10px 20px;
+
+    border:1px solid rgba(255,40,40,.45);
+    border-radius:50px;
+
+    background:rgba(100,0,0,.18);
+
+    color:#ff4545;
+
+    font-size:13px;
+    font-weight:800;
+
+    box-shadow:
+        0 0 30px rgba(255,0,0,.08),
+        inset 0 0 20px rgba(255,0,0,.03);
+
+    animation:warningPulse 1.5s infinite;
+}
+
+.dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#ff1e1e;
+
+    box-shadow:
+        0 0 8px #ff1e1e,
+        0 0 18px #ff1e1e;
+}
+
+@keyframes warningPulse{
+    0%,100%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.5;
+    }
+}
+
+/* TITLE */
+
+h1{
+    margin-top:27px;
+
+    font-size:clamp(34px,7vw,78px);
+
+    font-weight:900;
+
+    line-height:1.1;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 15px rgba(255,0,0,.4),
+        0 0 45px rgba(255,0,0,.18);
+}
+
+h1 span{
+    color:#ff2929;
+
+    text-shadow:
+        0 0 12px rgba(255,0,0,.8),
+        0 0 35px rgba(255,0,0,.35);
+}
+
+/* SUBTITLE */
+
+.subtitle{
+    margin-top:16px;
+
+    color:#8b8b8b;
+
+    font-size:15px;
+
+    font-weight:500;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+    margin-top:45px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:14px;
+}
+
+/* BOX */
+
+.box{
+    position:relative;
+
+    min-height:150px;
+
+    border:1px solid rgba(255,40,40,.2);
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,30,30,.08),
+            rgba(255,255,255,.015)
+        );
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:
+        inset 0 0 35px rgba(255,0,0,.025),
+        0 18px 55px rgba(0,0,0,.45);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+/* TOP RED LINE */
+
+.box::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:20%;
+
+    right:20%;
+
+    height:1px;
+
+    background:#ff2525;
+
+    box-shadow:
+        0 0 12px #ff2525,
+        0 0 25px rgba(255,0,0,.6);
+}
+
+/* BOX GLOW */
+
+.box::after{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    background:rgba(255,0,0,.04);
+
+    filter:blur(35px);
+
+    pointer-events:none;
+}
+
+/* NUMBERS */
+
+.number{
+    position:relative;
+    z-index:2;
+
+    font-size:clamp(36px,6vw,64px);
+
+    font-weight:900;
+
+    line-height:1;
+
+    color:#fff;
+
+    font-variant-numeric:tabular-nums;
+
+    text-shadow:
+        0 0 18px rgba(255,0,0,.25);
+}
+
+/* HUNDREDTH */
+
+.hundredths .number{
+    color:#ff3030;
+
+    text-shadow:
+        0 0 12px rgba(255,0,0,.6),
+        0 0 30px rgba(255,0,0,.25);
+}
+
+/* LABEL */
+
+.label{
+    position:relative;
+    z-index:2;
+
+    margin-top:15px;
+
+    color:#777;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+/* DYNAMIC MESSAGE */
+
+.message{
+    margin-top:33px;
+
+    min-height:35px;
+
+    font-size:clamp(17px,3vw,25px);
+
+    font-weight:800;
+
+    color:#d8d8d8;
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease;
+}
+
+.message span{
+    color:#ff3030;
+
+    text-shadow:
+        0 0 12px rgba(255,0,0,.35);
+}
+
+/* DATE */
+
+.date{
+    margin-top:11px;
+
+    color:#5e5e5e;
+
+    font-size:12px;
+}
+
+/* PROGRESS */
+
+.progress{
+    width:min(700px,90%);
+
+    height:4px;
+
+    margin:28px auto 0;
+
+    border-radius:20px;
+
+    background:#151515;
+
+    overflow:hidden;
+
+    box-shadow:
+        inset 0 0 5px rgba(0,0,0,.8);
+}
+
+.progress div{
+    height:100%;
+
+    width:0%;
+
+    border-radius:20px;
+
+    background:#ff2525;
+
+    box-shadow:
+        0 0 10px #ff2525,
+        0 0 25px rgba(255,0,0,.5);
+
+    transition:
+        width .2s linear;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:19px;
+
+    color:#3f3f3f;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+/* DANGER EFFECT */
+
+.alert{
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    border:1px solid transparent;
+}
+
+.alert.active{
+    animation:
+        danger .8s infinite;
+}
+
+@keyframes danger{
+    0%,100%{
+        box-shadow:
+            inset 0 0 0 rgba(255,0,0,0);
+    }
+
+    50%{
+        box-shadow:
+            inset 0 0 120px rgba(255,0,0,.15);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    body{
+        overflow:auto;
+
+        padding:30px 0;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .countdown{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:11px;
+
+        margin-top:35px;
+    }
+
+    .box{
+        min-height:125px;
+
+        border-radius:18px;
+    }
+
+    .box:last-child{
+        grid-column:span 2;
+    }
+
+    .message{
+        margin-top:27px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:400px){
+
+    .warning{
+        font-size:11px;
+
+        padding:8px 14px;
+    }
+
+    h1{
+        font-size:35px;
+    }
+
+    .subtitle{
+        font-size:12px;
+    }
+
+    .countdown{
+        gap:8px;
+    }
+
+    .box{
+        min-height:110px;
+
+        border-radius:15px;
+    }
+
+    .number{
+        font-size:34px;
+    }
+
+    .label{
+        font-size:11px;
+        margin-top:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scan"></div>
+
+<div class="alert" id="alert"></div>
+
+<div class="container">
+
+    <!-- WARNING -->
+
+    <div class="warning">
+        <div class="dot"></div>
+        آماده‌ای بگا بری؟ گریه کن حالا
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h1>
+        مانده تا شروع <span>بگایی</span>
+    </h1>
+
+
+    <!-- SUBTITLE -->
+
+    <div class="subtitle">
+        امتحانات • بی‌خوابی • تکالیف • زنگ صبح
+    </div>
+
+
+    <!-- COUNTDOWN -->
+
+    <div class="countdown">
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="days">
+                00
+            </div>
+
+            <div class="label">
+                روز
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="hours">
+                00
+            </div>
+
+            <div class="label">
+                ساعت
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="minutes">
+                00
+            </div>
+
+            <div class="label">
+                دقیقه
+            </div>
+
+        </div>
+
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="seconds">
+                00
+            </div>
+
+            <div class="label">
+                ثانیه
+            </div>
+
+        </div>
+
+
+        <div class="box hundredths">
+
+            <div
+                class="number"
+                id="hundredths">
+                00
+            </div>
+
+            <div class="label">
+                صدم ثانیه
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DYNAMIC TEXT -->
+
+    <div
+        class="message"
+        id="message">
+        تا شروع بدبختی <span>...</span>
+    </div>
+
+
+    <!-- TARGET DATE -->
+
+    <div class="date">
+        هدف: ۱ مهر ۱۴۰۵ — ساعت ۰۷:۰۰ صبح — وقت ایران
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+        <div id="progress"></div>
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        MAXO • SCHOOL WARNING SYSTEM
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   TARGET
+   =========================================================
+
+   ۱ مهر ۱۴۰۵
+   ساعت ۷ صبح
+   ایران UTC+3:30
+
+   تاریخ میلادی:
+   23 September 2026
+*/
+
+const target =
+    new Date(
+        "2026-09-23T07:00:00+03:30"
+    ).getTime();
+
+
+/* =========================================================
+   START DATE FOR PROGRESS BAR
+   ========================================================= */
+
+const start =
+    new Date(
+        "2026-09-06T00:00:00+03:30"
+    ).getTime();
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const daysEl =
+    document.getElementById("days");
+
+const hoursEl =
+    document.getElementById("hours");
+
+const minutesEl =
+    document.getElementById("minutes");
+
+const secondsEl =
+    document.getElementById("seconds");
+
+const hundredthsEl =
+    document.getElementById("hundredths");
+
+const messageEl =
+    document.getElementById("message");
+
+const progressEl =
+    document.getElementById("progress");
+
+const alertEl =
+    document.getElementById("alert");
+
+
+/* =========================================================
+   PAD NUMBER
+   ========================================================= */
+
+function pad(number){
+
+    return String(number)
+        .padStart(2,"0");
+
+}
+
+
+/* =========================================================
+   DYNAMIC MESSAGE
+   ========================================================= */
+
+function updateMessage(
+    days,
+    hours,
+    minutes,
+    seconds
+){
+
+    /*
+       بیشتر از یک روز
+    */
+
+    if(days > 0){
+
+        messageEl.innerHTML =
+            'تا شروع بدبختی <span>' +
+            days +
+            ' روز</span> مونده';
+
+    }
+
+
+    /*
+       کمتر از یک روز
+       ولی بیشتر از یک ساعت
+    */
+
+    else if(hours > 0){
+
+        messageEl.innerHTML =
+            'تا شروع بدبختی <span>' +
+            hours +
+            ' ساعت</span> مونده';
+
+    }
+
+
+    /*
+       کمتر از یک ساعت
+       ولی بیشتر از یک دقیقه
+    */
+
+    else if(minutes > 0){
+
+        messageEl.innerHTML =
+            'تا شروع بدبختی <span>' +
+            minutes +
+            ' دقیقه</span> مونده';
+
+    }
+
+
+    /*
+       کمتر از یک دقیقه
+    */
+
+    else if(seconds > 0){
+
+        messageEl.innerHTML =
+            'تا شروع بدبختی فقط <span>' +
+            seconds +
+            ' ثانیه</span> مونده';
+
+    }
+
+
+    /*
+       زمان تمام شده
+    */
+
+    else{
+
+        messageEl.innerHTML =
+            'وقتشه بری سراغ <span>بدبختی!</span>';
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN UPDATE
+   ========================================================= */
+
+function update(){
+
+    const now =
+        Date.now();
+
+
+    let diff =
+        target - now;
+
+
+    /* =====================================================
+       FINISHED
+       ===================================================== */
+
+    if(diff <= 0){
+
+        daysEl.textContent =
+            "00";
+
+        hoursEl.textContent =
+            "00";
+
+        minutesEl.textContent =
+            "00";
+
+        secondsEl.textContent =
+            "00";
+
+        hundredthsEl.textContent =
+            "00";
+
+
+        document.querySelector("h1").innerHTML =
+            'مدارس <span>باز شد!</span>';
+
+
+        document.querySelector(".subtitle").textContent =
+            "دیگه تموم شد... وقت مدرسه‌ست";
+
+
+        messageEl.innerHTML =
+            'وقتشه بری سراغ <span>بدبختی!</span>';
+
+
+        progressEl.style.width =
+            "100%";
+
+
+        alertEl.classList.add(
+            "active"
+        );
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       DAYS
+       ===================================================== */
+
+    const days =
+        Math.floor(
+            diff / 86400000
+        );
+
+
+    diff %=
+        86400000;
+
+
+    /* =====================================================
+       HOURS
+       ===================================================== */
+
+    const hours =
+        Math.floor(
+            diff / 3600000
+        );
+
+
+    diff %=
+        3600000;
+
+
+    /* =====================================================
+       MINUTES
+       ===================================================== */
+
+    const minutes =
+        Math.floor(
+            diff / 60000
+        );
+
+
+    diff %=
+        60000;
+
+
+    /* =====================================================
+       SECONDS
+       ===================================================== */
+
+    const seconds =
+        Math.floor(
+            diff / 1000
+        );
+
+
+    /* =====================================================
+       HUNDREDTHS
+       ===================================================== */
+
+    const hundredths =
+        Math.floor(
+            (diff % 1000) / 10
+        );
+
+
+    /* =====================================================
+       SHOW NUMBERS
+       ===================================================== */
+
+    daysEl.textContent =
+        pad(days);
+
+    hoursEl.textContent =
+        pad(hours);
+
+    minutesEl.textContent =
+        pad(minutes);
+
+    secondsEl.textContent =
+        pad(seconds);
+
+    hundredthsEl.textContent =
+        pad(hundredths);
+
+
+    /* =====================================================
+       UPDATE TEXT
+       ===================================================== */
+
+    updateMessage(
+        days,
+        hours,
+        minutes,
+        seconds
+    );
+
+
+    /* =====================================================
+       PROGRESS BAR
+       ===================================================== */
+
+    let percent =
+        (
+            (now - start) /
+            (target - start)
+        ) * 100;
+
+
+    percent =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                percent
+            )
+        );
+
+
+    progressEl.style.width =
+        percent + "%";
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+update();
+
+
+/*
+   10ms = تقریبا صدم ثانیه
+*/
+
+setInterval(
+    update,
+    10
+);
+
+</script>
+
+</body>
+</html>
